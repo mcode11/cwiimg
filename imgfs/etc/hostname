@@ -1,1 +1,1 @@
-hostname='customimg'
+()=>{return 'customimg'}

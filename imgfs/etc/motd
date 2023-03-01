@@ -1,1 +1,1 @@
-motd='Hello! Welcome to CustomIMG!'
+()=>{return 'Hello! Welcome to CustomIMG!'}

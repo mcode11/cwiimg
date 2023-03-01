@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cwiimg</title>
+    <title>cwiOS Demo</title>
+    <link rel="stylesheet" href="style.css">
     <script src="cwifs.js"></script>
-    <script defer src="image.js"></script>
-    <link rel="stylesheet" href="cwiterm.css">
+    <script src="image.js"></script>
+    <script src="app.js" defer="defer"></script>
+    
 </head>
 <body>
-    <input type="text" placeholder="Command">&nbsp;<button onclick="document.getElementById('eVal').innerHTML=exec(document.getElementsByTagName('input')[0].value)">Execute</button><br>
-    <p label="Command result" id="eVal"></p>
+    <input type="text" name="keyboardpop" id="keyboardpop"><label for="keyboardpop"><div id="terminal"></div></label>
 </body>
 </html>

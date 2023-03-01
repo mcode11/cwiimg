@@ -1,10 +1,11 @@
 cwifs.setup()
-function exec(argv) {argv=argv.split(` `);ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);return eval(cwifs.file.read('/bin/'+ret.split(' ')[0]))()(ret.replace(ret.split(' ')[0]+' ','').split(' '))+`<br>`;}
-cwifs.file.write(`/bin/echo`,`cmd_echo=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);return ret}}`)
-cwifs.file.write(`/bin/exec`,`cmd_exec=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);return eval(cwifs.file.read('/bin/'+ret.split(' ')[0]))()(ret.replace(ret.split(' ')[0]+' ','').split(' '));}}`)
-cwifs.file.write(`/etc/hostname`,`hostname='customimg'`)
-cwifs.file.write(`/etc/motd`,`motd='Hello! Welcome to CustomIMG!'`)
-cwifs.file.write(`/etc/version`,`version=1`)
-cwifs.file.write(`/home/.user`,`user='main'`)
-cwifs.file.write(`/home/main/.profile`,`prefix='main@customimg: % '`)
-usrhome='/home/main/'
+function exec(argv) {argv=argv.split(` `);ret='';for (key in argv) {key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);resut=[];ret.split(` && `).map(z=> resut.push(eval(cwifs.file.read('/bin/exec'))()(z.split(` `)))); return resut.toString().replaceAll(',','');}cwifs.file.write(`/bin/cat`,`cmd_cat=()=>{return (argv)=>{return cwifs.file.read(argv[0])+'<br>'}}`)
+cwifs.file.write(`/bin/echo`,`cmd_echo=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);return ret+'<br>'}}`)
+cwifs.file.write(`/bin/exec`,`cmd_exec=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);try{result=eval(cwifs.file.read('/bin/'+ret.split(' ')[0]))()(ret.replace(ret.split(' ')[0]+' ','').split(' '));}catch {result='/bin/'+ret.split(' ')[0]+': an error occured'+'<br>';} return result}}`)
+cwifs.file.write(`/bin/utility`,`cmd_utility=()=>{return (argv)=>{if (argv[0]=='motd'){return eval(cwifs.file.read('/etc/motd'))()+'<br>'}else if (argv[0]=='hostname'){return eval(cwifs.file.read('/etc/hostname'))()+'<br>'}else if (argv[0]=='version'){return eval(cwifs.file.read('/etc/version'))()+'<br>'}else if(argv[0]=='username'){return eval(cwifs.file.read('/home/.user'))()+'<br>'}else if(argv[0]=='prefix'){return eval(cwifs.file.read('/home/main/.prefix'))()}}}`)
+cwifs.file.write(`/etc/hostname`,`()=>{return 'customimg'}`)
+cwifs.file.write(`/etc/motd`,`()=>{return 'Hello! Welcome to CustomIMG!'}`)
+cwifs.file.write(`/etc/version`,`()=>{return 1}`)
+cwifs.file.write(`/home/.user`,`()=>{return 'main'}`)
+cwifs.file.write(`/home/main/.prefix`,`()=>{return 'main@customimg: % '}`)
+usrhome='/home/main'

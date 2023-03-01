@@ -1,1 +1,1 @@
-cmd_exec=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);return eval(cwifs.file.read('/bin/'+ret.split(' ')[0]))()(ret.replace(ret.split(' ')[0]+' ','').split(' '));}}
+cmd_exec=()=>{return (argv)=>{ret='';for (key in argv) {;key=argv[key];ret+=key+' ';};ret=ret.slice(0,-1);try{result=eval(cwifs.file.read('/bin/'+ret.split(' ')[0]))()(ret.replace(ret.split(' ')[0]+' ','').split(' '));}catch {result='/bin/'+ret.split(' ')[0]+': an error occured'+'<br>';} return result}}

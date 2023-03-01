@@ -1,0 +1,1 @@
+cmd_cat=()=>{return (argv)=>{return cwifs.file.read(argv[0])+'<br>'}}

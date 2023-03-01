@@ -9,7 +9,7 @@ for root, dirs, files in os.walk("."):
 for ifile in cwiimg:
     string='cwifs.file.write("'+ifile.replace(".js","")+'","'+open("."+ifile,"r").read()+'")'
     cwifscript+=string+"\n"
-cwifscript+="usrhome='/home/"+open("home/.user","r").read().replace("user=","").replace("'","")+"/"+"'"
+cwifscript+="usrhome='/home/main'"
 os.chdir("..")
 open("image.js","w").write(cwifscript.replace('"',"`"))
-open("cwifs.js","w").write(requests.get("https://mcode11.github.io/cwifs/cwifs.js").text)
+#open("cwifs.js","w").write(requests.get("https://mcode11.github.io/cwifs/cwifs.js").text)
