@@ -1,1 +1,1 @@
-lib_colord=()=>{return exec("echo hi")}
+lib_colord=()=>{return exec('echo hi')}
